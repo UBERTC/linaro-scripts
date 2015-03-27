@@ -52,7 +52,7 @@ then
     make $MAKE_FLAGS clean;
     make $MAKE_FLAGS distclean;
 fi;
-export UBER_PATH=$DIR/out/linaro-arm-eabi-4.8;
+export UBER_PATH=$DIR/out/linaro-arm-eabi-4.8-cortex-a15;
 export PREFIX=--prefix=$UBER_PATH;
 if [ -d "$UBER_PATH" ];
 then
@@ -70,7 +70,7 @@ cp -R $UBERROOT_SRC_PATH -f $UBERROOT_DEST_PATH;
 export UBERROOT=--with-sysroot=$UBERROOT_DEST_PATH/arch-arm;
 
 # Build Configuration
-./configure $PREFIX $UBERROOT --target=arm-eabi --host=x86_64-linux-gnu --build=x86_64-linux-gnu --program-transform-name='s&^&arm-eabi-&' --with-gcc-version=UBER --with-pkgversion="UBER-LINARO-4.8" --with-binutils-version=current --with-cloog-version=current --with-cloog-version=current --with-gmp-version=current --with-mpfr-version=current --with-mpc-version=current --with-gdb-version=current --disable-docs --disable-nls --disable-option-checking --disable-bootstrap --quiet --disable-werror --enable-graphite=yes;
+./configure $PREFIX $UBERROOT --target=arm-eabi --host=x86_64-linux-gnu --build=x86_64-linux-gnu --program-transform-name='s&^&arm-eabi-&' --with-gcc-version=UBER --with-pkgversion="UBER-LINARO-4.8" --with-binutils-version=current --with-cloog-version=current --with-cloog-version=current --with-gmp-version=current --with-mpfr-version=current --with-mpc-version=current --with-gdb-version=current --disable-docs --disable-nls --disable-option-checking --disable-bootstrap --quiet --disable-werror --enable-graphite=yes --with-float=hard --with-fpu=neon-vfpv4 --with-cpu=cortex-a15 --with-tune=cortex-a15;
 
 # Build the toolchain
 all1=$(date +%s.%N)
