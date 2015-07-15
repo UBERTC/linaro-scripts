@@ -1,3 +1,3 @@
 UNOFFICIAL UBER LINARO BUILD SCRIPTS
 ===========
-@cl3kener and linaro.org
+Credit goes to @cl3kener for developing these scripts to make compiling linaro.org toolchains fun and easy.
