@@ -1,3 +1,3 @@
-UNOFFICIAL UBER LINARO BUILD SCRIPTS
+UBER LINARO BUILD SCRIPTS
 ===========
-Credit goes to @cl3kener for developing these scripts to make compiling linaro.org toolchains fun and easy.
+These scripts were developed to make compiling linaro.org toolchains faster. These scripts can compile linaro toolchains significantly faster than crosstool or default linaro build scripts.
