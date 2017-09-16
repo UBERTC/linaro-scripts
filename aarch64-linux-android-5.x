@@ -35,7 +35,7 @@ echo "${bldblu}|______________________________________________________________|$
 echo ""
 echo ""
 
-cd ../gcc/gcc-UBER && rm -rf * && git reset --hard && git fetch uu linaro-4.9 && git checkout FETCH_HEAD && cd ../../;
+cd ../gcc/gcc-UBER && rm -rf * && git reset --hard && git fetch uu linaro-5.x && git checkout FETCH_HEAD && cd ../../;
 export DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd );
 export NUM_JOBS="$(cat /proc/cpuinfo | grep -c processor)";
 MAKE_FLAGS=-j"$NUM_JOBS";
@@ -49,7 +49,7 @@ then
     make $MAKE_FLAGS clean &> /dev/null;
     make $MAKE_FLAGS distclean &> /dev/null;
 fi;
-export UBER_PATH=$DIR/out/aarch64-linux-android-4.9-kernel;
+export UBER_PATH=$DIR/out/aarch64-linux-android-5.x-kernel;
 export PREFIX=--prefix=$UBER_PATH;
 if [ -d "$UBER_PATH" ];
 then
@@ -60,20 +60,20 @@ else
 fi;
 
 # UBERROOT
-cd ../sysroot && rm -rf * && git reset --hard && git fetch uu gcc-4.9 && git checkout FETCH_HEAD && cd ../build;
+cd ../sysroot && rm -rf * && git reset --hard && git fetch uu gcc-5.x && git checkout FETCH_HEAD && cd ../build;
 export UBERROOT_SRC_PATH=../sysroot/arch-arm64;
 export UBERROOT_DEST_PATH=$UBER_PATH;
 cp -R $UBERROOT_SRC_PATH -f $UBERROOT_DEST_PATH;
 export UBERROOT=--with-sysroot=$UBERROOT_DEST_PATH/arch-arm64;
 
 # Build Configuration
-# Build Configuration
-./configure $PREFIX $UBERROOT --host=x86_64-linux-gnu --build=x86_64-linux-gnu --target=aarch64-linux-android --program-transform-name='s&^&aarch64-linux-android-&' --with-gcc-version=UBER --with-pkgversion='UBERTC-4.9.x' --with-binutils-version=uber --with-gmp-version=uber --with-mpfr-version=uber --with-mpc-version=uber --with-cloog-version=uber --with-isl-version=uber --enable-threads --enable-ld=default --enable-fix-cortex-a53-835769 --enable-plugins --enable-gold --disable-option-checking --disable-libsanitizer --enable-libatomic-ifuncs=no --enable-libgomp --enable-initfini-array --disable-docs --disable-nls --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --disable-bootstrap --quiet --with-gxx-include-dir=$UBERROOT_DEST_PATH/c++ --disable-werror --disable-shared;
+./configure $PREFIX $UBERROOT --host=x86_64-linux-gnu --build=x86_64-linux-gnu --target=aarch64-linux-android --program-transform-name='s&^&aarch64-linux-android-&' --with-gcc-version=UBER --with-pkgversion='LINARO-5.x.x' --with-binutils-version=uber --with-gmp-version=uber --with-mpfr-version=uber --with-mpc-version=uber --with-cloog-version=uber --with-isl-version=uber --enable-threads --enable-ld=default --enable-fix-cortex-a53-835769 --enable-plugins --enable-gold --disable-option-checking --disable-libsanitizer --enable-libatomic-ifuncs=no --enable-libgomp --enable-initfini-array --disable-docs --disable-nls --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --disable-bootstrap --quiet --with-gxx-include-dir=$UBERROOT_DEST_PATH/c++ --disable-werror --disable-shared;
+
 echo ""
-echo "${bldblu}Building your Linaro aarch64-4.9 Toolchain!!!${txtrst}"
+echo "${bldblu}Building your Linaro aarch64-5.x Toolchain!!!${txtrst}"
 echo ""
 all1=$(date +%s.%N)
-script -q $DIR/out/LINARO-AARCH64-4.9.log -c "make 1>/dev/null $MAKE_FLAGS";
+script -q $DIR/out/Linaro-AARCH64-5.x.log -c "make 1>/dev/null $MAKE_FLAGS";
 
 echo ""
 echo "${bldblu}Installing Toolchain to:${txtrst}${blu} $UBER_PATH ${txtrst}"
@@ -91,7 +91,7 @@ then
     echo "${bldgrn}      _|  _|    _|  _|        _|        _|              _|        _|    ${txtrst}"
     echo "${bldgrn}_|_|_|      _|_|      _|_|_|    _|_|_|  _|_|_|_|  _|_|_|    _|_|_|    _|${txtrst}"
     echo ""
-    echo "${bldgrn}Your LINARO 4.9 aarch64 Toolchain has completed successfully!!! ${txtrst}"
+    echo "${bldgrn}Your Linaro 5.x aarch64 Toolchain has completed successfully!!! ${txtrst}"
     echo "${bldgrn}Toolchain is located at:${txtrst}${grn} $UBER_PATH ${txtrst}"
     echo ""
     all2=$(date +%s.%N)
@@ -105,7 +105,7 @@ else
     echo "${bldred}_|        _|    _|  _|    _|  _|    _|  _|    _|${txtrst}"
     echo "${bldred}_|_|_|_|  _|    _|  _|    _|    _|_|    _|    _|${txtrst}"
     echo ""
-    echo "${bldred}Error Log is found at:${txtrst}${red} $DIR/out/Linaro-AARCH64-4.9.log ${txtrst}"
+    echo "${bldred}Error Log is found at:${txtrst}${red} $DIR/out/Linaro-AARCH64-5.x.log ${txtrst}"
     echo ""
     read -p "Press ENTER to Exit"
 fi;

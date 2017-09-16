@@ -67,8 +67,7 @@ cp -R $UBERROOT_SRC_PATH -f $UBERROOT_DEST_PATH;
 export UBERROOT=--with-sysroot=$UBERROOT_DEST_PATH/arch-arm64;
 
 # Build Configuration
-./configure $PREFIX $UBERROOT --host=x86_64-linux-gnu --build=x86_64-linux-gnu --target=aarch64-linux-android --program-transform-name='s&^&aarch64-linux-android-&' --with-gcc-version=UBER --with-pkgversion='Linaro-6.x.x' -with-binutils-version=current --with-gmp-version=current --with-mpfr-version=current --with-mpc-version=current --with-cloog-version=current --with-isl-version=current --enable-graphite --enable-threads --enable-ld=default --enable-fix-cortex-a53-835769 -enable-plugins --disable-gold --disable-option-checking --disable-docs --disable-nls --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --disable-bootstrap --quiet --with-gxx-include-dir=$UBERROOT_DEST_PATH/c++ --disable-werror --disable-shared --disable-libmudflap --disable-libquadmath --disable-libsanitizer --disable-libgomp --disable-libatomic;
-
+./configure $PREFIX $UBERROOT --host=x86_64-linux-gnu --build=x86_64-linux-gnu --target=aarch64-linux-android --program-transform-name='s&^&aarch64-linux-android-&' --with-gcc-version=UBER --with-pkgversion='LINARO-6.x.x' --with-binutils-version=uber --with-gmp-version=uber --with-mpfr-version=uber --with-mpc-version=uber --with-cloog-version=uber --with-isl-version=uber --enable-threads --enable-ld=default --enable-fix-cortex-a53-835769 --enable-plugins --enable-gold --disable-option-checking --disable-libsanitizer --enable-libatomic-ifuncs=no --enable-libgomp --enable-initfini-array --disable-docs --disable-nls --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --disable-bootstrap --quiet --with-gxx-include-dir=$UBERROOT_DEST_PATH/c++ --disable-werror --disable-shared;
 echo ""
 echo "${bldblu}Building your Linaro aarch64-6.x Toolchain!!!${txtrst}"
 echo ""
